@@ -1,0 +1,110 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: users
+    // Document ID: {userId} (matches request.auth.uid)
+    // Fields:
+    //   - uid: string (required)
+    //   - email: string (required)
+    //   - displayName: string (optional)
+    //   - photoURL: string (optional)
+    //   - createdAt: timestamp (required)
+    //   - role: string (required, 'user' or 'admin')
+    //   - isAnonymous: bool (required)
+    //
+    // Collection: chats
+    // Document ID: {chatId}
+    // Fields:
+    //   - userId: string (required, matches request.auth.uid)
+    //   - title: string (required, max 100 chars)
+    //   - engine: string (required)
+    //   - folder: string (required)
+    //   - thumbnail: string (optional)
+    //   - updatedAt: timestamp (required)
+    //   - messages: list of maps (required)
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isDocOwner() {
+      return isAuthenticated() && request.auth.uid == resource.data.userId;
+    }
+
+    function isValidEmail(email) {
+      return email is string && (email == "anonymous" || email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"));
+    }
+
+    function isValidUrl(url) {
+      return url is string && (url.matches("^https://.*") || url.matches("^http://.*"));
+    }
+
+    function hasOnlyAllowedFields(fields) {
+      return request.resource.data.keys().hasOnly(fields);
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && 
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+         (request.auth.token.email == "dgulati352@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    // ===============================================================
+    // Domain Validators
+    // ===============================================================
+
+    function isValidUser(data) {
+      return hasOnlyAllowedFields(['uid', 'email', 'displayName', 'photoURL', 'createdAt', 'role', 'isAnonymous']) &&
+             data.uid == request.auth.uid &&
+             isValidEmail(data.email) &&
+             data.role in ['user', 'admin'] &&
+             data.isAnonymous is bool &&
+             (data.role == 'user' || isAdmin());
+    }
+
+    function isValidChat(data) {
+      return hasOnlyAllowedFields(['userId', 'title', 'engine', 'folder', 'thumbnail', 'updatedAt', 'messages']) &&
+             data.userId == request.auth.uid &&
+             data.title is string && data.title.size() <= 100 &&
+             data.engine is string &&
+             data.folder is string &&
+             data.messages is list;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isOwner(userId) && isValidUser(request.resource.data);
+      allow update: if isOwner(userId) && isValidUser(request.resource.data) && 
+                      request.resource.data.role == resource.data.role; // Prevent self-promotion
+    }
+
+    match /chats/{chatId} {
+      allow read: if isDocOwner() || isAdmin();
+      allow create: if isAuthenticated() && isValidChat(request.resource.data);
+      allow update: if isDocOwner() && isValidChat(request.resource.data);
+      allow delete: if isDocOwner() || isAdmin();
+    }
+
+    match /test/connection {
+      allow read: if true;
+    }
+  }
+}

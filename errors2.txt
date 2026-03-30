@@ -1,0 +1,49 @@
+online chat/vite.config.ts(6,29): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Argument of type '({ mode }: ConfigEnv) => { plugins: Plugin<any>[][]; define: { 'process.env.GEMINI_API_KEY': string; }; resolve: { alias: { '@': string; }; }; server: { hmr: boolean; }; }' is not assignable to parameter of type 'UserConfigExport'.
+      Type '({ mode }: ConfigEnv) => { plugins: Plugin<any>[][]; define: { 'process.env.GEMINI_API_KEY': string; }; resolve: { alias: { '@': string; }; }; server: { hmr: boolean; }; }' is not assignable to type 'UserConfigFnObject'.
+        Call signature return types '{ plugins: Plugin<any>[][]; define: { 'process.env.GEMINI_API_KEY': string; }; resolve: { alias: { '@': string; }; }; server: { hmr: boolean; }; }' and 'UserConfig' are incompatible.
+          The types of 'plugins' are incompatible between these types.
+            Type 'Plugin<any>[][]' is not assignable to type 'PluginOption[]'.
+              Type 'Plugin<any>[]' is not assignable to type 'PluginOption'.
+                Type 'Plugin<any>[]' is not assignable to type 'PluginOption[]'.
+                  Type 'Plugin<any>' is not assignable to type 'PluginOption'.
+                    Type 'import("D:/anti/node_modules/vite/dist/node/index").Plugin<any>' is not assignable to type 'import("D:/anti/online chat/node_modules/vite/dist/node/index").Plugin<any>'.
+                      Types of property 'hotUpdate' are incompatible.
+                        Type 'import("D:/anti/node_modules/rollup/dist/rollup").ObjectHook<(this: HotUpdatePluginContext, options: import("D:/anti/node_modules/vite/dist/node/index").HotUpdateOptions) => void | import("D:/anti/node_modules/vite/dist/node/index").EnvironmentModuleNode[] | Promise<...>>' is not assignable to type 'import("D:/anti/node_modules/rollup/dist/rollup").ObjectHook<(this: HotUpdatePluginContext, options: import("D:/anti/online chat/node_modules/vite/dist/node/index").HotUpdateOptions) => void | import("D:/anti/online chat/node_modules/vite/dist/node/index").EnvironmentModuleNode[] | Promise<...>>'.
+                          Type '(this: HotUpdatePluginContext, options: HotUpdateOptions) => void | EnvironmentModuleNode[] | Promise<void | EnvironmentModuleNode[]>' is not assignable to type 'ObjectHook<(this: HotUpdatePluginContext, options: HotUpdateOptions) => void | EnvironmentModuleNode[] | Promise<void | EnvironmentModuleNode[]>>'.
+                            Type '(this: HotUpdatePluginContext, options: import("D:/anti/node_modules/vite/dist/node/index").HotUpdateOptions) => void | import("D:/anti/node_modules/vite/dist/node/index").EnvironmentModuleNode[] | Promise<...>' is not assignable to type '(this: HotUpdatePluginContext, options: import("D:/anti/online chat/node_modules/vite/dist/node/index").HotUpdateOptions) => void | import("D:/anti/online chat/node_modules/vite/dist/node/index").EnvironmentModuleNode[] | Promise<...>'.
+                              The 'this' types of each signature are incompatible.
+                                Type 'HotUpdatePluginContext' is not assignable to type 'HotUpdatePluginContext'. Two different types with this name exist, but they are unrelated.
+                                  The types of 'environment.pluginContainer.environment' are incompatible between these types.
+                                    Type 'import("D:/anti/online chat/node_modules/vite/dist/node/index").Environment' is not assignable to type 'import("D:/anti/node_modules/vite/dist/node/index").Environment'.
+                                      Type 'DevEnvironment' is not assignable to type 'Environment'.
+stitch-skills/skills/react-components/examples/gold-standard-card.tsx(20,26): error TS2307: Cannot find module '../data/mockData' or its corresponding type declarations.
+stitch-skills/skills/remotion/examples/WalkthroughComposition.tsx(1,27): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+stitch-skills/skills/remotion/examples/WalkthroughComposition.tsx(2,24): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+stitch-skills/skills/remotion/examples/WalkthroughComposition.tsx(3,20): error TS2307: Cannot find module '@remotion/transitions/fade' or its corresponding type declarations.
+stitch-skills/skills/remotion/examples/WalkthroughComposition.tsx(4,21): error TS2307: Cannot find module '@remotion/transitions/slide' or its corresponding type declarations.
+stitch-skills/skills/remotion/examples/WalkthroughComposition.tsx(5,32): error TS2307: Cannot find module '@remotion/transitions' or its corresponding type declarations.
+stitch-skills/skills/remotion/examples/WalkthroughComposition.tsx(6,27): error TS2307: Cannot find module './ScreenSlide' or its corresponding type declarations.
+stitch-skills/skills/remotion/examples/WalkthroughComposition.tsx(7,29): error TS2307: Cannot find module '../screens.json' or its corresponding type declarations.
+stitch-skills/skills/remotion/resources/screen-slide-template.tsx(1,69): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+stitch-skills/skills/remotion/resources/screen-slide-template.tsx(2,19): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/auth-layout.tsx(6,24): error TS2307: Cannot find module '@/components/ui/button' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/auth-layout.tsx(14,8): error TS2307: Cannot find module '@/components/ui/card' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/auth-layout.tsx(15,23): error TS2307: Cannot find module '@/components/ui/input' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/auth-layout.tsx(16,23): error TS2307: Cannot find module '@/components/ui/label' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/auth-layout.tsx(17,58): error TS2307: Cannot find module '@/components/ui/tabs' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/data-table.tsx(16,8): error TS2307: Cannot find module '@tanstack/react-table' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/data-table.tsx(20,24): error TS2307: Cannot find module '@/components/ui/button' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/data-table.tsx(29,8): error TS2307: Cannot find module '@/components/ui/dropdown-menu' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/data-table.tsx(30,23): error TS2307: Cannot find module '@/components/ui/input' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/data-table.tsx(38,8): error TS2307: Cannot find module '@/components/ui/table' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/form-pattern.tsx(6,24): error TS2307: Cannot find module '@/components/ui/button' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/form-pattern.tsx(15,8): error TS2307: Cannot find module '@/components/ui/form' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/form-pattern.tsx(16,23): error TS2307: Cannot find module '@/components/ui/input' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/form-pattern.tsx(23,8): error TS2307: Cannot find module '@/components/ui/select' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/form-pattern.tsx(24,26): error TS2307: Cannot find module '@/components/ui/textarea' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/form-pattern.tsx(25,23): error TS2307: Cannot find module '@/components/ui/use-toast' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/form-pattern.tsx(26,29): error TS2307: Cannot find module '@hookform/resolvers/zod' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/form-pattern.tsx(27,25): error TS2307: Cannot find module 'react-hook-form' or its corresponding type declarations.
+stitch-skills/skills/shadcn-ui/examples/form-pattern.tsx(28,20): error TS2307: Cannot find module 'zod' or its corresponding type declarations.

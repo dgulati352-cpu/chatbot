@@ -1,0 +1,19 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "outputDirectory": "dist",
+  "env": {
+    "VITE_GEMINI_API_KEY": "@gemini_api_key",
+    "VITE_CEREBRAS_API_KEY": "@cerebras_api_key",
+    "VITE_GROK_API_KEY": "@grok_api_key",
+    "VITE_NVIDIA_API_KEY": "@nvidia_api_key",
+    "VITE_OPENAI_API_KEY": "@openai_api_key",
+    "VITE_SUPABASE_URL": "@supabase_url",
+    "VITE_SUPABASE_ANON_KEY": "@supabase_anon_key",
+    "VITE_OFFLINE_LLM_URL": "@offline_llm_url",
+    "VITE_OFFLINE_LLM_MODEL": "@offline_llm_model",
+    "VITE_OFFLINE_CEREBRAS_MODEL": "@offline_cerebras_model",
+    "VITE_OFFLINE_GPT_MODEL": "@offline_gpt_model"
+  }
+}

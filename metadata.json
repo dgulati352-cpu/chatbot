@@ -1,0 +1,5 @@
+{
+  "name": "DEEPTHINK AI",
+  "description": "Enterprise Grade AI chat interface with multi-engine support and workspace organization.",
+  "requestFramePermissions": ["camera"]
+}

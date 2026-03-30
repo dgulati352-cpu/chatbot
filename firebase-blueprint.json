@@ -1,0 +1,57 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores user-specific settings and profile information.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique identifier for the user." },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string", "format": "uri" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "role": { "type": "string", "enum": ["user", "admin"] },
+        "isAnonymous": { "type": "boolean" }
+      },
+      "required": ["uid", "email", "isAnonymous"]
+    },
+    "Chat": {
+      "title": "Chat Session",
+      "description": "Represents a single chat conversation.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "engine": { "type": "string" },
+        "folder": { "type": "string" },
+        "thumbnail": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "messages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "role": { "type": "string", "enum": ["user", "model"] },
+              "text": { "type": "string" },
+              "timestamp": { "type": "number" },
+              "attachments": { "type": "array" }
+            }
+          }
+        }
+      },
+      "required": ["userId", "title", "engine"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile documents."
+    },
+    "/chats/{chatId}": {
+      "schema": "Chat",
+      "description": "Collection of chat sessions."
+    }
+  }
+}
