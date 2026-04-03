@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="todo.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📝 To-Do List</h1>
+      <div class="stats">
+        <span id="stat-total">Total: 0</span>
+        <span id="stat-pending">Pending: 0</span>
+        <span id="stat-completed">Completed: 0</span>
+      </div>
+    </header>
+
+    <section class="input-section">
+      <input
+        type="text"
+        id="task-input"
+        placeholder="Add a new task…"
+        aria-label="New task"
+        maxlength="200"
+      />
+      <button id="add-btn" aria-label="Add task">Add Task</button>
+    </section>
+
+    <section class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="active">Active</button>
+      <button class="filter-btn" data-filter="completed">Completed</button>
+    </section>
+
+    <ul id="task-list" aria-label="Task list"></ul>
+
+    <p id="empty-msg" class="empty-msg">No tasks yet. Add one above!</p>
+
+    <section class="bulk-actions">
+      <button id="clear-completed-btn">Clear Completed</button>
+      <button id="clear-all-btn" class="danger">Clear All</button>
+    </section>
+  </div>
+
+  <!-- Edit Modal -->
+  <div id="edit-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <h2 id="modal-title">Edit Task</h2>
+      <input type="text" id="edit-input" maxlength="200" aria-label="Edit task text" />
+      <div class="modal-actions">
+        <button id="save-edit-btn">Save</button>
+        <button id="cancel-edit-btn" class="secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <div id="modal-overlay" class="modal-overlay"></div>
+
+  <script src="todo.js"></script>
+</body>
+</html>
